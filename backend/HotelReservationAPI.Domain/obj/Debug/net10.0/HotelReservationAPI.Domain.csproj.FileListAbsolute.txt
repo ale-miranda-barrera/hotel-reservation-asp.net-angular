@@ -1,0 +1,11 @@
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\bin\Debug\net10.0\HotelReservationAPI.Domain.deps.json
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\bin\Debug\net10.0\HotelReservationAPI.Domain.dll
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\bin\Debug\net10.0\HotelReservationAPI.Domain.pdb
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.AssemblyInfoInputs.cache
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.AssemblyInfo.cs
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.csproj.CoreCompileInputs.cache
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.dll
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\refint\HotelReservationAPI.Domain.dll
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.pdb
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\ref\HotelReservationAPI.Domain.dll
