@@ -187,7 +187,6 @@ import { Reservation } from '../../../../shared/models/reservation.model';
         }
       }
 
-      <!-- Quick Actions / Create Hotel Section -->
       <div class="admin-actions">
         <div class="action-card">
           <div class="action-icon">🏨</div>
@@ -195,11 +194,52 @@ import { Reservation } from '../../../../shared/models/reservation.model';
             <h3 class="action-title">Nuevo Hotel</h3>
             <p class="action-desc">Registra una nueva propiedad en el sistema</p>
           </div>
-          <button class="btn btn-primary" (click)="quickCreateHotel()">
+          <button class="btn btn-primary" (click)="isCreatingHotel.set(true)">
             + Registrar Hotel
           </button>
         </div>
       </div>
+
+      @if (isCreatingHotel()) {
+        <div class="modal-overlay">
+          <div class="modal-card">
+            <div class="modal-header">
+              <h2>Registrar Nuevo Hotel</h2>
+              <button class="modal-close-btn" (click)="isCreatingHotel.set(false)">✕</button>
+            </div>
+            <div class="modal-body">
+              <form #hotelForm="ngForm" class="hotel-form">
+                <div class="form-group">
+                  <label>Nombre del Hotel</label>
+                  <input type="text" [(ngModel)]="newHotel().name" name="name" required placeholder="Ej: Hilton Garden Inn">
+                </div>
+                <div class="form-group">
+                  <label>Ciudad</label>
+                  <input type="text" [(ngModel)]="newHotel().city" name="city" required placeholder="Ej: Medellín">
+                </div>
+                <div class="form-group">
+                  <label>Dirección</label>
+                  <input type="text" [(ngModel)]="newHotel().address" name="address" required placeholder="Ej: Cra 43 # 10-10">
+                </div>
+                <div class="form-group">
+                  <label>Teléfono</label>
+                  <input type="text" [(ngModel)]="newHotel().phone" name="phone" required placeholder="Ej: 6041234567">
+                </div>
+                <div class="form-group">
+                  <label>Precio por Noche</label>
+                  <input type="number" [(ngModel)]="newHotel().pricePerNight" name="price" required min="1">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="isCreatingHotel.set(false)">Cancelar</button>
+              <button class="btn btn-confirm" [disabled]="!hotelForm.form.valid" (click)="saveHotel()">
+                Guardar Hotel
+              </button>
+            </div>
+          </div>
+        </div>
+      }
     </div>
   `,
   styles: [`
@@ -422,6 +462,73 @@ import { Reservation } from '../../../../shared/models/reservation.model';
       box-shadow: 0 4px 12px rgba(26, 26, 46, 0.3);
     }
 
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1rem;
+    }
+    .modal-card {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: modalSlide 0.3s ease-out;
+      overflow: hidden;
+    }
+    @keyframes modalSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-header {
+      padding: 1.5rem;
+      background: #1a1a2e;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h2 { margin: 0; font-size: 1.25rem; }
+    .modal-close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .modal-body { padding: 2rem; }
+    .hotel-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: #4b5563; }
+    .form-group input {
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .form-group input:focus { border-color: #1a1a2e; box-shadow: 0 0 0 2px rgba(26,26,46,0.1); }
+    .modal-footer {
+      padding: 1.25rem 2rem;
+      background: #f9fafb;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    .btn-secondary { background: #e5e7eb; color: #1f2937; }
+    .btn-secondary:hover { background: #d1d5db; }
+
     .selector-section {
       background: #fff;
       border-radius: 12px;
@@ -539,18 +646,23 @@ export class ReservationStatsComponent implements OnInit {
   selectedHotelId = signal<number | null>(null);
   feedback = signal<{ text: string; isError?: boolean } | null>(null);
 
-  totalReservations = computed(() => this.reservations().length);
-  totalRevenue = computed(() => this.reservations().reduce((sum, r) => sum + r.totalPrice, 0));
+  isCreatingHotel = signal(false);
+  newHotel = signal<any>({ name: '', city: '', address: '', phone: '', pricePerNight: 0 });
+
+  totalReservations = computed(() => this.reservations().filter(r => r.status !== 'Cancelled').length);
+  totalRevenue = computed(() => this.reservations()
+    .filter(r => r.status !== 'Cancelled')
+    .reduce((sum, r) => sum + r.totalPrice, 0)
+  );
   averagePrice = computed(() => {
-    const len = this.reservations().length;
-    return len === 0 ? 0 : this.totalRevenue() / len;
+    const count = this.totalReservations();
+    return count === 0 ? 0 : this.totalRevenue() / count;
   });
 
   ngOnInit(): void {
     this.hotelService.getHotels().subscribe({
       next: (hotels) => {
         this.hotels.set(hotels);
-        // Default selection: Medellin or first available
         const medellinId = hotels.find(h => h.city.toLowerCase().includes('medellin'))?.id;
         if (medellinId) {
           this.onHotelChange(medellinId);
@@ -575,7 +687,6 @@ export class ReservationStatsComponent implements OnInit {
     if (this.selectedHotelId()) {
       this.reservationService.getReservationsByHotel(this.selectedHotelId()!).subscribe({
         next: (reservations) => {
-          // Sort by date (mocking "latest" by taking most recent 5)
           const sorted = [...reservations].sort((a, b) =>
             new Date(b.checkInDate).getTime() - new Date(a.checkInDate).getTime()
           );
@@ -629,19 +740,13 @@ export class ReservationStatsComponent implements OnInit {
     });
   }
 
-  quickCreateHotel(): void {
-    const newHotel = {
-      name: 'Nuevo Hotel Luxury',
-      city: 'Medellín',
-      address: 'Calle 10 # 43-21, El Poblado',
-      phone: '4441234',
-      pricePerNight: 150
-    };
-
-    this.hotelService.createHotel(newHotel).subscribe({
+  saveHotel(): void {
+    const data = this.newHotel();
+    this.hotelService.createHotel(data).subscribe({
       next: (hotel) => {
         this.showFeedback(`Hotel "${hotel.name}" registrado correctamente.`);
-        // Reload hotels list
+        this.isCreatingHotel.set(false);
+        this.newHotel.set({ name: '', city: '', address: '', phone: '', pricePerNight: 0 });
         this.hotelService.getHotels().subscribe(h => this.hotels.set(h));
       },
       error: (err) => {
@@ -655,11 +760,15 @@ export class ReservationStatsComponent implements OnInit {
     this.selectedHotelId.set(hotelId);
     if (hotelId === null) {
       this.reservations.set([]);
+      this.latestReservations.set([]);
       return;
     }
     this.reservations.set([]);
     this.reservationService.getReservationsByHotel(hotelId).subscribe({
-      next: (reservations) => this.reservations.set(reservations),
+      next: (reservations) => {
+        this.reservations.set(reservations);
+        this.loadLatestReservations();
+      },
       error: (err) => console.error('Error loading reservations:', err)
     });
   }
