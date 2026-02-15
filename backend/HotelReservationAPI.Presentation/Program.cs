@@ -17,6 +17,7 @@ builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 
 // Agregar servicios
 builder.Services.AddScoped<IHotelService, HotelService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 
 // Agregar controladores
 builder.Services.AddControllers();
@@ -30,9 +31,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy.AllowAnyOrigin()
+       .AllowAnyMethod()
+       .AllowAnyHeader();
     });
 });
 
@@ -45,11 +46,8 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowAngular");
 app.UseHttpsRedirection();

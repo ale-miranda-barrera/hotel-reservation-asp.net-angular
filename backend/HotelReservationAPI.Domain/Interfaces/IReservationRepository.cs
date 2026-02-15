@@ -7,6 +7,7 @@ namespace HotelReservationAPI.Domain.Interfaces
         Task<Reservation> GetByIdAsync(int id);
         Task<IEnumerable<Reservation>> GetByGuestEmailAsync(string email);
         Task<IEnumerable<Reservation>> GetByHotelAsync(int hotelId);
+        Task<IEnumerable<Reservation>> GetByStatusAsync(ReservationStatus status);
         Task AddAsync(Reservation reservation);
         Task UpdateAsync(Reservation reservation);
         Task DeleteAsync(int id);

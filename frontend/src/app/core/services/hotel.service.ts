@@ -24,19 +24,21 @@ export class HotelService {
   }
 
   createHotel(hotel: CreateHotelDto): Observable<Hotel> {
-    return this.http.post<Hotel>(this.apiUrl, hotel);
+    return this.http.post<any>(this.apiUrl, hotel).pipe(
+      map(h => this.mapHotelResponse(h))
+    );
   }
 
   updateHotel(id: number, hotel: CreateHotelDto): Observable<Hotel> {
-    return this.http.put<Hotel>(`${this.apiUrl}/${id}`, hotel);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, hotel).pipe(
+      map(h => this.mapHotelResponse(h))
+    );
   }
 
   deleteHotel(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // The backend Hotel entity doesn't have pricePerNight, imageUrl, or rating yet.
-  // Generate deterministic fallback values based on the hotel ID.
   private mapHotelResponse(apiHotel: any): Hotel {
     const images = [
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
@@ -51,7 +53,7 @@ export class HotelService {
       city: apiHotel.city,
       address: apiHotel.address,
       phone: apiHotel.phone,
-      pricePerNight: apiHotel.pricePerNight ?? (100 + (apiHotel.id * 15) % 300),
+      pricePerNight: apiHotel.pricePerNight ?? 0,
       rating: apiHotel.rating ?? (3 + (apiHotel.id % 3)),
       imageUrl: apiHotel.imageUrl ?? images[apiHotel.id % images.length]
     };

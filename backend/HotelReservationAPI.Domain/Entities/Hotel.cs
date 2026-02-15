@@ -7,6 +7,7 @@
         public string City { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+        public decimal PricePerNight { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 

@@ -33,6 +33,16 @@ namespace HotelReservationAPI.Infrastructure.Repositories
         {
             return await _context.Reservations
                 .Where(r => r.HotelId == hotelId)
+                .Include(r => r.Hotel)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Reservation>> GetByStatusAsync(ReservationStatus status)
+        {
+            return await _context.Reservations
+                .Where(r => r.Status == status)
+                .Include(r => r.Hotel)
+                .OrderByDescending(r => r.CreatedAt)
                 .ToListAsync();
         }
 

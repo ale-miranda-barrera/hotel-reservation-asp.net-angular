@@ -7,5 +7,6 @@
         public string? City { get; set; }
         public string? Address { get; set; }
         public string? Phone { get; set; }
+        public decimal PricePerNight { get; set; }
     }
 }

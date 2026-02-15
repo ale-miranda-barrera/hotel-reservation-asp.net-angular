@@ -43,7 +43,7 @@ import { Hotel } from '../../../../shared/models/hotel.model';
                 <p class="card-city">&#128205; {{ hotel.city }}</p>
                 <div class="card-divider"></div>
                 <div class="card-footer">
-                  <span class="card-price">{{ hotel.pricePerNight | currency:'USD':'symbol':'1.0-0' }}</span>
+                  <span class="card-price">{{ hotel.pricePerNight | currency:'COP':'symbol':'1.0-0' }}</span>
                   <span class="card-night">/ noche</span>
                 </div>
               </div>

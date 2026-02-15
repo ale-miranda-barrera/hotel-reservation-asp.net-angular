@@ -55,6 +55,7 @@ namespace HotelReservationAPI.Infrastructure.Data
                     City = "Bogotá",
                     Address = "Carrera 7 #24-89",
                     Phone = "601-2345678",
+                    PricePerNight = 250000m,
                     CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                     UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc)
                 },
@@ -65,6 +66,7 @@ namespace HotelReservationAPI.Infrastructure.Data
                     City = "Medellín",
                     Address = "Avenida Paseo Peatonal",
                     Phone = "604-5678901",
+                    PricePerNight = 180000m,
                     CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                     UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc)
                 },
@@ -75,6 +77,7 @@ namespace HotelReservationAPI.Infrastructure.Data
                     City = "Cartagena",
                     Address = "Centro Histórico",
                     Phone = "605-9012345",
+                    PricePerNight = 320000m,
                     CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                     UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc)
                 },
@@ -85,6 +88,7 @@ namespace HotelReservationAPI.Infrastructure.Data
                     City = "Santa Marta",
                     Address = "Frente al mar",
                     Phone = "605-3456789",
+                    PricePerNight = 280000m,
                     CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                     UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc)
                 }

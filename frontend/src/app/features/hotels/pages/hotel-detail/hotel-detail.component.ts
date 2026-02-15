@@ -42,7 +42,7 @@ function checkOutAfterCheckIn(group: AbstractControl): ValidationErrors | null {
           @if (hotel(); as h) {
             <div class="hero-badges">
               <span class="badge-star">&#9733; {{ h.rating }} Estrellas</span>
-              <span class="badge-price">{{ h.pricePerNight | currency:'USD':'symbol':'1.0-0' }} / noche</span>
+              <span class="badge-price">{{ h.pricePerNight | currency:'COP':'symbol':'1.0-0' }} / noche</span>
             </div>
             <h1 class="hero-title">{{ h.name }}</h1>
             <p class="hero-location">&#128205; {{ h.city }}</p>
@@ -104,7 +104,7 @@ function checkOutAfterCheckIn(group: AbstractControl): ValidationErrors | null {
           <div class="booking-card">
             <h3 class="booking-title">Reserva tu estadia</h3>
             @if (hotel(); as h) {
-              <p class="booking-price">{{ h.pricePerNight | currency:'USD':'symbol':'1.0-0' }} <span>/ noche</span></p>
+              <p class="booking-price">{{ h.pricePerNight | currency:'COP':'symbol':'1.0-0' }} <span>/ noche</span></p>
             }
 
             <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
@@ -141,12 +141,12 @@ function checkOutAfterCheckIn(group: AbstractControl): ValidationErrors | null {
               @if (totalNights() > 0 && hotel(); as h) {
                 <div class="price-summary">
                   <div class="price-row">
-                    <span>{{ h.pricePerNight | currency:'USD':'symbol':'1.0-0' }} x {{ totalNights() }} noches</span>
-                    <span>{{ calculatedTotal() | currency:'USD':'symbol':'1.0-0' }}</span>
+                    <span>{{ h.pricePerNight | currency:'COP':'symbol':'1.0-0' }} x {{ totalNights() }} noches</span>
+                    <span>{{ calculatedTotal() | currency:'COP':'symbol':'1.0-0' }}</span>
                   </div>
                   <div class="price-total">
                     <span>Total</span>
-                    <span>{{ calculatedTotal() | currency:'USD':'symbol':'1.0-0' }}</span>
+                    <span>{{ calculatedTotal() | currency:'COP':'symbol':'1.0-0' }}</span>
                   </div>
                 </div>
               }

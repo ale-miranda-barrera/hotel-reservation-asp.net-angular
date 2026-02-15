@@ -14,12 +14,20 @@ export class ReservationService {
     return this.http.post<Reservation>(this.apiUrl, reservation);
   }
 
+  getPendingReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.apiUrl}/pending`);
+  }
+
   getReservationsByEmail(email: string): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.apiUrl}?email=${encodeURIComponent(email)}`);
   }
 
   getReservationsByHotel(hotelId: number): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${this.apiUrl}/hotel/${hotelId}`);
+  }
+
+  updateStatus(id: number, status: string): Observable<Reservation> {
+    return this.http.patch<Reservation>(`${this.apiUrl}/${id}/status`, { status });
   }
 
   cancelReservation(id: number): Observable<void> {

@@ -9,3 +9,4 @@ C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelRese
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\refint\HotelReservationAPI.Domain.dll
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.pdb
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\ref\HotelReservationAPI.Domain.dll
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Domain\obj\Debug\net10.0\HotelReservationAPI.Domain.sourcelink.json

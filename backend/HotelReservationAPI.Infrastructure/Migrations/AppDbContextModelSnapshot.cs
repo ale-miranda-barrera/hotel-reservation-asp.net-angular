@@ -51,6 +51,9 @@ namespace HotelReservationAPI.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<decimal>("PricePerNight")
+                        .HasColumnType("numeric");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -67,6 +70,7 @@ namespace HotelReservationAPI.Infrastructure.Migrations
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Hotel Bogotá",
                             Phone = "601-2345678",
+                            PricePerNight = 250000m,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -77,6 +81,7 @@ namespace HotelReservationAPI.Infrastructure.Migrations
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Hotel Medellín",
                             Phone = "604-5678901",
+                            PricePerNight = 180000m,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -87,6 +92,7 @@ namespace HotelReservationAPI.Infrastructure.Migrations
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Hotel Cartagena",
                             Phone = "605-9012345",
+                            PricePerNight = 320000m,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
@@ -97,6 +103,7 @@ namespace HotelReservationAPI.Infrastructure.Migrations
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Name = "Hotel Santa Marta",
                             Phone = "605-3456789",
+                            PricePerNight = 280000m,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });

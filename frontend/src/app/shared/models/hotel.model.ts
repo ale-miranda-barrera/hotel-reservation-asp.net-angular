@@ -1,5 +1,3 @@
-// src/app/shared/models/hotel.model.ts
-
 export interface Hotel {
   id: number;
   name: string;
@@ -16,4 +14,5 @@ export interface CreateHotelDto {
   city: string;
   address: string;
   phone: string;
+  pricePerNight: number;
 }

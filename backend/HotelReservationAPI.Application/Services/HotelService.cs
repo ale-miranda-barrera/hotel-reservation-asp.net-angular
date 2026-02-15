@@ -36,7 +36,8 @@ namespace HotelReservationAPI.Application.Services
                 Name = h.Name,
                 City = h.City,
                 Address = h.Address,
-                Phone = h.Phone
+                Phone = h.Phone,
+                PricePerNight = h.PricePerNight
             });
         }
 
@@ -57,7 +58,8 @@ namespace HotelReservationAPI.Application.Services
                 Name = hotel.Name,
                 City = hotel.City,
                 Address = hotel.Address,
-                Phone = hotel.Phone
+                Phone = hotel.Phone,
+                PricePerNight = hotel.PricePerNight
             };
         }
 
@@ -70,7 +72,8 @@ namespace HotelReservationAPI.Application.Services
                 Name = dto.Name,
                 City = dto.City,
                 Address = dto.Address,
-                Phone = dto.Phone
+                Phone = dto.Phone,
+                PricePerNight = dto.PricePerNight
             };
 
             if (!hotel.IsValidHotel())
@@ -90,7 +93,8 @@ namespace HotelReservationAPI.Application.Services
                 Name = hotel.Name,
                 City = hotel.City,
                 Address = hotel.Address,
-                Phone = hotel.Phone
+                Phone = hotel.Phone,
+                PricePerNight = hotel.PricePerNight
             };
         }
 
@@ -109,6 +113,7 @@ namespace HotelReservationAPI.Application.Services
             hotel.City = dto.City;
             hotel.Address = dto.Address;
             hotel.Phone = dto.Phone;
+            hotel.PricePerNight = dto.PricePerNight;
             hotel.UpdatedAt = DateTime.UtcNow;
 
             if (!hotel.IsValidHotel())
@@ -123,7 +128,8 @@ namespace HotelReservationAPI.Application.Services
                 Name = hotel.Name,
                 City = hotel.City,
                 Address = hotel.Address,
-                Phone = hotel.Phone
+                Phone = hotel.Phone,
+                PricePerNight = hotel.PricePerNight
             };
         }
 

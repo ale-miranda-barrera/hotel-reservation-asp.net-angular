@@ -1,17 +1,3 @@
-// src/app/shared/components/navbar/navbar.component.ts
-//
-// NavbarComponent — layout-level component, not a "dumb" presentational component
-// in the strict sense, but also not a "smart" feature component. It lives in
-// shared/components because it is used globally by the MainLayout shell.
-//
-// Design decisions:
-//  - Imports AsyncPipe directly (Angular 18 standalone, no CommonModule needed for just async)
-//  - Uses AuthService via inject() — the Angular 18 preferred pattern over constructor injection
-//  - Subscribes to isAdmin$ via | async pipe in the template — automatic unsubscription,
-//    no manual takeUntilDestroyed needed here because async pipe handles it.
-//  - RouterLink + RouterLinkActive for navigation with active-state styling
-//  - Admin-only "Estadisticas" link is conditionally rendered with @if control flow
-
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -74,9 +60,6 @@ import { AuthService } from '../../../core/services/auth.service';
     </nav>
   `,
   styles: [`
-    /* -------------------------------------------------------
-       Navbar — fixed top, full width, dark navy background
-       ------------------------------------------------------- */
     .navbar {
       position: fixed;
       top: 0;
@@ -98,9 +81,7 @@ import { AuthService } from '../../../core/services/auth.service';
       height: 100%;
     }
 
-    /* -------------------------------------------------------
-       Brand
-       ------------------------------------------------------- */
+
     .navbar-brand {
       text-decoration: none;
       display: flex;
@@ -117,9 +98,7 @@ import { AuthService } from '../../../core/services/auth.service';
       white-space: nowrap;
     }
 
-    /* -------------------------------------------------------
-       Nav links
-       ------------------------------------------------------- */
+
     .navbar-links {
       display: flex;
       align-items: center;
@@ -152,9 +131,7 @@ import { AuthService } from '../../../core/services/auth.service';
       background-color: rgba(201, 168, 76, 0.15);
     }
 
-    /* -------------------------------------------------------
-       Actions area (badge + toggle button)
-       ------------------------------------------------------- */
+  
     .navbar-actions {
       display: flex;
       align-items: center;
@@ -215,13 +192,8 @@ import { AuthService } from '../../../core/services/auth.service';
   `]
 })
 export class NavbarComponent {
-  // inject() is the Angular 18 preferred pattern — equivalent to useContext() in React
   private readonly authService = inject(AuthService);
-
-  // Expose the Observable directly to the template — the | async pipe
-  // subscribes and unsubscribes automatically (no takeUntilDestroyed needed here)
   readonly isAdmin$ = this.authService.isAdmin$;
-
   toggleAdmin(): void {
     this.authService.toggleAdminMode();
   }

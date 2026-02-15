@@ -17,3 +17,4 @@ C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelRese
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Infrastructure\obj\Debug\net10.0\HotelReservationAPI.Infrastructure.pdb
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Infrastructure\obj\Debug\net10.0\HotelReservationAPI.Infrastructure.genruntimeconfig.cache
 C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Infrastructure\obj\Debug\net10.0\ref\HotelReservationAPI.Infrastructure.dll
+C:\Users\alemi\OneDrive\Desktop\programming\hotel-rerservation\backend\HotelReservationAPI.Infrastructure\obj\Debug\net10.0\HotelReservationAPI.Infrastructure.sourcelink.json
