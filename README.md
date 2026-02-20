@@ -1,3 +1,7 @@
+Apariencia de la aplicacion: 
+[![Alt text](https://img.youtube.com/vi/bvdl8_eCVxE/0.jpg)](https://www.youtube.com/watch?v=bvdl8_eCVxE)
+
+
 # 🏨 Hotel Reservation System
 
 **Solución empresarial de gestión de reservas hoteleras para Hoteles San Bernardo (1,000+ hoteles en Colombia)**
