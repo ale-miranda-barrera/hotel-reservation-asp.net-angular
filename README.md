@@ -1,5 +1,7 @@
-Apariencia de la aplicacion: 
+## Apariencia de la aplicacion - Mira el video dando click aqui:
+
 [![Alt text](https://img.youtube.com/vi/bvdl8_eCVxE/0.jpg)](https://www.youtube.com/watch?v=bvdl8_eCVxE)
+---
 
 
 # 🏨 Hotel Reservation System
