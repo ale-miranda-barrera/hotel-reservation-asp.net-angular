@@ -1,4 +1,4 @@
-## Apariencia de la aplicacion - Mira el video dando click aqui:
+## Apariencia de la aplicación: Mira el video dando click aquí:
 
 [![Alt text](https://img.youtube.com/vi/bvdl8_eCVxE/0.jpg)](https://www.youtube.com/watch?v=bvdl8_eCVxE)
 ---
